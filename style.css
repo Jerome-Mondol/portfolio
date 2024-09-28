@@ -15,7 +15,7 @@ html, body{
 .cursor {
   width: 40px;
   height: 40px;
-  background: #21212170;
+  background: #1E3E62;
   position: fixed;
   border-radius: 50%;
   font-size: 13px;
@@ -37,7 +37,7 @@ html, body{
 
 nav {
   height: 5rem;
-  background: #212121;
+  background: #111A28;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -48,15 +48,15 @@ nav {
 .logo {
   margin-left: 5rem;
   overflow: hidden;
-  height: 60px;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.logo h1{
-  color: #EE6056;
-  font-size: 55px;
+.logo img{
+  width: auto;
+  height: 240%;
 }
 
 .nav-links {
@@ -70,24 +70,21 @@ nav {
 
 .nav-links a {
   text-decoration: none;
-  color: #fff;
-  font-size: 17px;
-  color: #EE6056;
-  font-weight: 500;
+  color: #F7EED3;
+  /* border: 2px solid #; */
+  font-size: 21px;
+  font-weight: 450;
 }
 
 .hire-btn {
-  color: #212121;
-  background: #EE6056;
+  color: #F7EED3;
+  background: #111A28;
   padding: 5px 35px;
   border: none;
   font-size: 17px;
   font-weight: 500;
   cursor: pointer;
-
-  &:hover {
-    color: #fff;
-  }
+  border: 2px solid #00CF5D;
 }
 
 .hero-main {
@@ -97,7 +94,7 @@ nav {
   justify-content: space-evenly;
   align-items: center;
   flex-direction: row;
-  background: #EE6056;
+  background: #111A28;
 }
 
 .hero-p1 {
@@ -111,12 +108,14 @@ nav {
 }
 
 .hero-p1 h1 {
-  font-size: 45px;
+  font-size: 65px;
+  color: #F7EED3;
 }
 
 .hero-p1 p {
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 500;
+  color: #00CF5D;
 }
 
 .hero-p2 {
@@ -137,8 +136,8 @@ nav {
   font-size: 16px;
   padding: 5px 25px;
   margin-top: 50px;
-  background: #212121;
-  border: 2px solid #212121;
+  background: #1E3E62;
+  border: 2px solid #1E3E62;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -148,7 +147,7 @@ nav {
 }
 
 .hero-p2-btn:hover{
-  background: #EE6056;
+  background: #1c1c1bff;
 }
 
 .social-media {
@@ -166,8 +165,8 @@ nav {
   width: 50px;
   height: 50px;
   font-size: 20px;
-  background: #212121;
-  border: 1px solid #212121;
+  background: #1E3E62;
+  border: 1px solid #1E3E62;
   color: #fff;
   border-radius: 50px;
   cursor: pointer;
@@ -183,7 +182,7 @@ nav {
   content: "";
   width: 100px;
   height: 0;
-  background: #EE6056;
+  background: #1c1c1bff;
   position: absolute;
   top: 100%;
   left: 50%;
@@ -202,7 +201,7 @@ nav {
   justify-content: space-evenly;
   align-items: center;
   overflow-x: hidden;
-  background: #212121;
+  background: #1E3E62;
   position: relative;
 }
 
@@ -222,7 +221,7 @@ nav {
 .about-p2 {
   width: 30%;
   height: 90%;
-  color: #EE6056;
+  color: #1c1c1bff;
   text-align: left;
   display: flex;
   justify-content: center;
@@ -248,9 +247,9 @@ nav {
 
 .about-p3 {
   width: 30%;
-  /* border: 2px solid red; */
+  /* border: 2px solid #1c1c1bff; */
   height: 90%;
-  color: #EE6056;
+  color: #1c1c1bff;
   padding: 20px;
   overflow: hidden;
   z-index: 3;
@@ -296,7 +295,7 @@ nav {
 .about-card {
   width: 100%;
   position: absolute;
-  background: #212121;
+  background: #1E3E62;
   left: 0;
   top: 0;
   visibility: hidden;
@@ -330,8 +329,8 @@ nav {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background: #212121;
-  color: #EE6056;
+  background: #1E3E62;
+  color: #1c1c1bff;
 }
 
 .projects-h1 {
@@ -353,7 +352,7 @@ nav {
   width: 40%;
   height: 100%;
   overflow: hidden;
-  border: 1px solid #EE6056;
+  border: 1px solid #1c1c1bff;
   border-radius: 20px;
   cursor: pointer;
   position: relative;
@@ -377,7 +376,7 @@ nav {
   width: 40%;
   height: 100%;
   overflow: hidden;
-  border: 1px solid #EE6056;
+  border: 1px solid #1c1c1bff;
   border-radius: 20px;
   cursor: pointer;
 }
@@ -392,7 +391,7 @@ nav {
   align-items: center;
   height: 100vh;
   width: 100%;
-  background: #212121;
+  background: #1E3E62;
   overflow: hidden;
 }
 
@@ -420,14 +419,14 @@ nav {
   background: transparent;
   border: none;
   outline: none;
-  border-bottom: 2px solid #EE6056;
-  color: #EE6056;
+  border-bottom: 2px solid #1c1c1bff;
+  color: #1c1c1bff;
   font-size: 17px;
 }
 
 .contact-p1 form input::placeholder {
   font-size: 17px;
-  color: #EE6056;
+  color: #1c1c1bff;
   transform: translateY(10px);
 }
 
@@ -440,16 +439,16 @@ nav {
   width: 70%;
   background: none;
   border: none;
-  border-bottom: 2px solid #EE6056;
+  border-bottom: 2px solid #1c1c1bff;
   outline: none;
-  color: #EE6056;
+  color: #1c1c1bff;
   font-size: 17px;
   margin-top: 20px;
 }
 
 .contact-p1 form textarea::placeholder {
   font-size: 17px;
-  color: #EE6056;
+  color: #1c1c1bff;
 }
 
 .text {
@@ -466,7 +465,7 @@ nav {
   justify-content: center;
   flex-direction: column;
   align-items: left;
-  color: #EE6056;
+  color: #1c1c1bff;
   gap: 50px;
 }
 
