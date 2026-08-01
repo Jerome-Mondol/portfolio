@@ -31,39 +31,23 @@
 /** @type {Project[]} */
 export const projects = [
   {
-    title: "Haven Analytics",
+    title: "Rapid Node",
     year: 2026,
-    slug: "haven-analytics",
+    slug: "rapid-node",
     description:
-      "A real-time dashboard that turns raw product events into decisions: streaming, alerting, and a typed query layer over billions of rows.",
-    stack: ["Next.js", "TypeScript", "PostgreSQL", "ClickHouse", "AWS"],
-    links: { live: "#", code: "#" },
+      "Scaffold a production-ready Node.js backend project in seconds. RapidNode automates project initialization with pre-configured folder structures, dependency installation, and customizable templates",
+    stack: ["Javascript", "NPM"],
+    image: "/projects/rapidnode.webp",
+    links: { live: "https://www.npmjs.com/package/@jeroomew/rapidnode", code: "https://github.com/Jerome-Mondol/rapidnode" },
   },
   {
-    title: "Lumen Design System",
+    title: "Asset Verse",
     year: 2025,
-    slug: "lumen-design-system",
+    slug: "asset-verse",
     description:
-      "A tokenized, accessible component library used across four products: documented in Storybook, tested with Playwright, themed in milliseconds.",
-    stack: ["React", "TypeScript", "Tailwind", "Storybook", "Vitest"],
-    links: { live: "#", code: "#" },
-  },
-  {
-    title: "Portwise",
-    year: 2025,
-    slug: "portwise",
-    description:
-      "An onboarding engine that cut time-to-value by 40%: guided flows, save-state recovery, and a permission model that just works.",
-    stack: ["Next.js", "Node.js", "PostgreSQL", "Redis"],
-    links: { live: "#", code: "#" },
-  },
-  {
-    title: "Relay CLI",
-    year: 2024,
-    slug: "relay-cli",
-    description:
-      "An open-source command-line tool that wires microservices to shared config in one command: bootstrapped from a scratch repo to CI green.",
-    stack: ["TypeScript", "Node.js", "OpenAPI", "GitHub Actions"],
-    links: { live: "#", code: "#" },
+      "An application for HR's and employees for better asset management of a company.",
+    stack: ["React", "Javascript", "MongoDB", "Stripe", "Firebase", "NodeJs", "ExpressJs"],
+    image: "/projects/assetverse.webp",
+    links: { live: "https://asset-verse-d1aa8.web.app/", code: "https://github.com/Jerome-Mondol/assetVerse-client" },
   },
 ];
