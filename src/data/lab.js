@@ -25,45 +25,63 @@
 /** @type {LabItem[]} */
 export const labItems = [
   {
-    title: "Smoke Tester 9000",
-    location: "Workbench, 2am",
-    date: "2024",
-  },
-  {
-    title: "Breadboard PSU",
-    location: "The good drawer",
-    date: "2023",
-  },
-  {
-    title: "Photo-cell theremin",
-    location: "Spare room, evicted",
-    date: "2025",
-    image: "https://avatars.githubusercontent.com/u/165287567?v=4"
-  },
-  {
-    title: "Line follower, gen 4",
-    location: "Kitchen floor",
-    date: "2025",
-  },
-  {
-    title: "Gripper arm",
-    location: "Garage bench",
-    date: "2024",
-  },
-  {
-    title: "Hexapod (frame only)",
-    location: "3D printer corner",
+    title: "Project Showcase",
+    location: "Dhaka, Bangladesh",
     date: "2026",
+    image: '/dnd/1.webp'
   },
   {
-    title: "LED clock",
-    location: "Nightstand",
-    date: "2023",
+    title: "Building",
+    location: "HOMEE",
+    date: "2026",
+    image: "/dnd/2.webp"
   },
   {
-    title: "Cupboard interlock",
-    location: "The pantry",
+    title: "Building",
+    location: "Excitedd",
+    date: "2026",
+    image: "/dnd/3.webp"
+  },
+  {
+    title: "PRIZEE",
+    location: "PRIZEE",
+    date: "2026",
+    image: "/dnd/4.webp"
+  },
+  {
+    title: "Project Showcase",
+    location: "Bigganchinta",
+    date: "2025",
+    image: "/dnd/5.webp"
+  },
+  {
+    title: "Making",
+    location: "Engineerss!!",
+    date: "2026",
+    image: "/dnd/6.webp"
+  },
+  {
+    title: "Showcase",
+    location: "VR",
+    date: "2026",
+    image: "/dnd/7.webp"
+  },
+  {
+    title: "Memories",
+    location: "Chill guys",
+    date: "2026",
+    image: "/dnd/8.webp"
+  },
+  {
+    title: "Prize",
+    location: "PRIZEE",
     date: "2022",
+    image: "/dnd/9.webp"
   },
-  
+  {
+    title: "Project",
+    location: "PROJECTT",
+    date: "2022",
+    image: "/dnd/10.webp"
+  },
 ];

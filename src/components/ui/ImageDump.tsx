@@ -19,7 +19,7 @@ const tilts = [
 ];
 
 /** Mixed photo sizes so a full pile stays organic, whatever the count. */
-const sizes = ["w-44", "w-52", "w-40", "w-48", "w-44", "w-56"];
+const sizes = ["w-60", "w-72", "w-56", "w-64", "w-60", "w-80"];
 
 /**
  * Deterministic scatter — same on server and client, so hydration never
@@ -169,8 +169,8 @@ export function ImageDump({ items }: { items: LabItem[] }) {
       ref={containerRef}
       role="application"
       aria-label="Photo dump — drag the photos around to see the ones underneath"
-      className="relative h-[26rem] w-full overflow-hidden border border-line bg-surface"
-      style={{ minHeight: `max(26rem, ${items.length * 1.5}rem)` }}
+      className="relative h-[34rem] w-full overflow-hidden border border-line bg-surface"
+      style={{ minHeight: `max(34rem, ${items.length * 1.9}rem)` }}
     >
       {items.map((item, index) => {
         const position = positions[index];
@@ -207,7 +207,7 @@ export function ImageDump({ items }: { items: LabItem[] }) {
                     alt={`${item.title} photo`}
                     fill
                     draggable={false}
-                    sizes="(min-width: 640px) 224px, 176px"
+                    sizes="(min-width: 640px) 320px, 240px"
                     className="object-cover"
                   />
                 ) : (
