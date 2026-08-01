@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, type FormEvent, type ReactNode } from "react";
+import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/cn";
 
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/mzdnlkez";
+const SUBMISSION_LOCK_KEY = "portfolio-contact-submitted-v1";
 
 /**
  * ContactForm — name, email, message. UI-only for now: submit shows a
@@ -41,6 +42,10 @@ export function ContactForm() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  useEffect(() => {
+    setSubmitted(window.localStorage.getItem(SUBMISSION_LOCK_KEY) === "1");
+  }, []);
+
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -65,6 +70,7 @@ export function ContactForm() {
 
       form.reset();
       setSubmitted(true);
+      window.localStorage.setItem(SUBMISSION_LOCK_KEY, "1");
     } catch {
       setError(
         "The message could not be sent right now. Please try again or email me directly."
@@ -85,8 +91,9 @@ export function ContactForm() {
           Message received — nice.
         </p>
         <p className="max-w-prose text-sm leading-relaxed text-muted">
-          Thanks for reaching out. I&apos;ve got your message and will get back
-          to you as soon as I can.
+          Thanks for reaching out. I&apos;ve got your message and this browser
+          is now locked from sending another one. If you need to follow up,
+          email me directly from the header.
         </p>
       </div>
     );
@@ -133,7 +140,7 @@ export function ContactForm() {
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
         <button
           type="submit"
-          disabled={submitting}
+          disabled={submitting || submitted}
           className="group inline-flex items-center justify-center gap-2 rounded-md bg-accent px-5 py-3 text-sm font-bold text-ink transition-colors duration-200 hover:bg-accent-bright"
         >
           {submitting ? "Sending..." : "Send message"}
