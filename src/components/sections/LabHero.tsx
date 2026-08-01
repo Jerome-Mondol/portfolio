@@ -30,12 +30,14 @@ export function LabHero() {
 
         <Link
           href="/"
-          className="group mt-8 inline-flex items-center gap-2 text-sm font-medium text-fg transition-colors hover:text-accent"
+          className="group mt-8 inline-flex items-center gap-3 rounded-md border border-accent/50 bg-accent px-4 py-3 text-sm font-bold text-ink transition-all duration-200 hover:-translate-y-0.5 hover:border-accent-bright hover:bg-accent-bright focus-visible:border-accent-bright focus-visible:bg-accent-bright"
         >
+          <span className="inline-flex size-7 items-center justify-center rounded-sm border border-ink/15 bg-ink/10 text-ink transition-transform duration-200 group-hover:-translate-x-0.5">
           <ArrowLeft
-            className="size-4 shrink-0 transition-transform duration-200 group-hover:-translate-x-0.5"
+            className="size-4 shrink-0"
             strokeWidth={1.5}
           />
+          </span>
           Back to the professional page
         </Link>
       </Container>

@@ -1,5 +1,8 @@
+"use client";
+
 import { Camera } from "lucide-react";
 import Image from "next/image";
+import { useCallback, useState } from "react";
 import { Container } from "@/components/layout/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { cn } from "@/lib/cn";
@@ -16,6 +19,8 @@ const statusHues: Record<
   SMOKED: { text: "text-accent", border: "border-accent" },
   "IN PIECES": { text: "text-accent-4", border: "border-accent-4" },
 };
+
+const fallbackStatusHue = statusHues.SMOKED;
 
 /** Sheets sit a fraction off-square, pinned rather than aligned. */
 const sheetTilts = [
@@ -46,12 +51,12 @@ export function LabProjects() {
           </p>
         </Reveal>
 
-        <div className="mt-8 columns-1 gap-4 sm:columns-2 lg:columns-3">
+        <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {labProjects.map((project, index) => (
             <Reveal
               key={project.serial}
               delay={(index % 3) * 70}
-              className="mb-4 break-inside-avoid"
+              className="h-full"
             >
               <BuildSheet
                 project={project}
@@ -73,7 +78,40 @@ function BuildSheet({
   project: LabProject;
   tilt: string;
 }) {
-  const hue = statusHues[project.status];
+  const hue = statusHues[project.status] ?? fallbackStatusHue;
+  const images = project.images?.length
+    ? project.images
+    : project.image
+      ? [project.image]
+      : [];
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [imagePosition, setImagePosition] = useState({ x: 50, y: 50 });
+
+  const updateActiveImage = useCallback(
+    (event: React.PointerEvent<HTMLDivElement>) => {
+      const rect = event.currentTarget.getBoundingClientRect();
+      const x = Math.min(100, Math.max(0, ((event.clientX - rect.left) / rect.width) * 100));
+      const y = Math.min(100, Math.max(0, ((event.clientY - rect.top) / rect.height) * 100));
+
+      setImagePosition({ x, y });
+
+      if (images.length <= 1) return;
+
+      const ratio = (event.clientX - rect.left) / rect.width;
+      const nextIndex = Math.min(
+        images.length - 1,
+        Math.max(0, Math.floor(ratio * images.length))
+      );
+
+      setActiveImageIndex(nextIndex);
+    },
+    [images.length]
+  );
+
+  const resetActiveImage = useCallback(() => {
+    setActiveImageIndex(0);
+    setImagePosition({ x: 50, y: 50 });
+  }, []);
 
   return (
     <article
@@ -88,19 +126,33 @@ function BuildSheet({
         className="absolute -top-2.5 left-6 z-10 h-4 w-14 -rotate-3 rounded-[2px] bg-accent/70"
       />
 
-      <div className="relative aspect-[16/10] w-full border-b border-line bg-ink/60">
-        {project.image ? (
+      <div
+        className="relative aspect-[16/10] w-full border-b border-line bg-ink/60"
+        onPointerEnter={updateActiveImage}
+        onPointerMove={updateActiveImage}
+        onPointerLeave={resetActiveImage}
+      >
+        {images.length > 0 ? (
           <Image
-            src={project.image}
+            key={images[activeImageIndex]}
+            src={images[activeImageIndex]}
             alt={`${project.title} photo`}
             fill
             sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-            className="object-cover"
+            className="object-cover transition-[object-position] duration-150 ease-out"
+            style={{ objectPosition: `${imagePosition.x}% ${imagePosition.y}%` }}
           />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center">
             <Camera className="size-5 text-muted/50" strokeWidth={1.25} />
           </div>
+        )}
+        {images.length > 1 && (
+          <span className="absolute bottom-3 left-3 rounded-sm border border-line bg-ink/70 px-1.5 py-0.5 text-[9px] font-bold tracking-[0.15em] text-fg">
+            {String(activeImageIndex + 1).padStart(2, "0")}/{String(
+              images.length
+            ).padStart(2, "0")}
+          </span>
         )}
         <span
           aria-hidden="true"

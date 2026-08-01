@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, FlaskConical } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { cn } from "@/lib/cn";
 import { profile } from "@/data/profile";
@@ -30,11 +30,14 @@ export function SiteHeader() {
           <Link
             href="/lab"
             className={cn(
-              "link-underline text-xs font-medium tracking-wide transition-colors",
+              "group inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.16em] transition-colors duration-200",
               onLab ? "text-accent" : "text-muted hover:text-accent"
             )}
           >
-            lab
+            <span className="inline-flex items-center gap-1.5">
+              <FlaskConical className="size-3.5 shrink-0 animate-lab-cue" strokeWidth={1.8} />
+              <span className="animate-lab-cue-delayed">lab</span>
+            </span>
           </Link>
 
           <a

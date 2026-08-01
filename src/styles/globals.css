@@ -88,6 +88,117 @@
   transform-origin: center;
 }
 
+@keyframes jump {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  35% {
+    transform: translateY(-2px) scale(1.06);
+  }
+  55% {
+    transform: translateY(0) scale(0.98);
+  }
+  75% {
+    transform: translateY(-1px) scale(1.03);
+  }
+}
+
+@keyframes lab-jump {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  35% {
+    transform: translateY(-2px) rotate(-2deg);
+  }
+  60% {
+    transform: translateY(0) rotate(0deg);
+  }
+  80% {
+    transform: translateY(-1px) rotate(1deg);
+  }
+}
+
+@keyframes lab-color {
+  0%,
+  100% {
+    color: var(--color-accent);
+  }
+  25% {
+    color: var(--color-accent-2);
+  }
+  50% {
+    color: var(--color-accent-3);
+  }
+  75% {
+    color: var(--color-accent-4);
+  }
+}
+
+.animate-lab-cue {
+  animation:
+    lab-jump 1.5s ease-in-out infinite,
+    lab-color 5s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.animate-lab-cue-delayed {
+  animation:
+    lab-jump 1.5s ease-in-out infinite 120ms,
+    lab-color 5s ease-in-out infinite 120ms;
+  transform-origin: center;
+}
+
+@keyframes wave {
+  0%,
+  60%,
+  100% {
+    transform: rotate(0deg) translateY(0);
+  }
+  15% {
+    transform: rotate(12deg) translateY(-1px);
+  }
+  30% {
+    transform: rotate(-10deg) translateY(0);
+  }
+  45% {
+    transform: rotate(10deg) translateY(-1px);
+  }
+}
+
+@keyframes poke {
+  0%,
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+  35% {
+    transform: translateX(1px) translateY(0.5px);
+  }
+  55% {
+    transform: translateX(-0.5px) translateY(0);
+  }
+  75% {
+    transform: translateX(0.75px) translateY(-0.25px);
+  }
+}
+
+@keyframes poke-angry {
+  0%,
+  100% {
+    transform: translateX(0) translateY(0) rotate(0deg);
+  }
+  20% {
+    transform: translateX(1px) translateY(0.5px) rotate(4deg);
+  }
+  45% {
+    transform: translateX(-1px) translateY(0) rotate(-3deg);
+  }
+  70% {
+    transform: translateX(0.5px) translateY(-0.5px) rotate(3deg);
+  }
+}
+
 /* ------------------------------------------------------------
    MICRO-INTERACTION SYSTEM
    Three reveal mechanisms + a shared hover language, tuned with
