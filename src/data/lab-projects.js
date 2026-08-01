@@ -54,7 +54,7 @@ export const labProjects = [
     images: ["/dnd/10.webp"]
   },
   {
-    serial: "2",
+    serial: "LAB-002",
     title: "Automatons",
     category: "Electronics",
     year: "2025",

@@ -19,8 +19,7 @@ export function LabDump() {
             The dump.
           </h2>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">
-            Photos dumped, not arranged. Drag them around to see the ones
-            underneath — the tag on each says where it was taken.
+            MEMORIES ARENT ORGANIZED!!!
           </p>
         </Reveal>
 

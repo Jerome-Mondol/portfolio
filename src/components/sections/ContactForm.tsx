@@ -4,6 +4,8 @@ import { useState, type FormEvent, type ReactNode } from "react";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/cn";
 
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/mzdnlkez";
+
 /**
  * ContactForm — name, email, message. UI-only for now: submit shows a
  * confirmation state in place. The email-sending pipeline plugs in here
@@ -36,10 +38,40 @@ function Field({
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setSubmitted(true);
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    setSubmitting(true);
+    setError(null);
+
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Something went wrong while sending the message.");
+      }
+
+      form.reset();
+      setSubmitted(true);
+    } catch {
+      setError(
+        "The message could not be sent right now. Please try again or email me directly."
+      );
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   if (submitted) {
@@ -53,9 +85,8 @@ export function ContactForm() {
           Message received — nice.
         </p>
         <p className="max-w-prose text-sm leading-relaxed text-muted">
-          This form is front-end only for now — the sending pipeline is next on
-          the list. If you need a fast answer today, use the email in the
-          header and you&apos;ll hear back either way.
+          Thanks for reaching out. I&apos;ve got your message and will get back
+          to you as soon as I can.
         </p>
       </div>
     );
@@ -102,9 +133,10 @@ export function ContactForm() {
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
         <button
           type="submit"
+          disabled={submitting}
           className="group inline-flex items-center justify-center gap-2 rounded-md bg-accent px-5 py-3 text-sm font-bold text-ink transition-colors duration-200 hover:bg-accent-bright"
         >
-          Send message
+          {submitting ? "Sending..." : "Send message"}
           <ArrowRight
             className="size-4 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5"
             strokeWidth={2}
@@ -114,6 +146,12 @@ export function ContactForm() {
           Prefer email? The address in the header works too.
         </p>
       </div>
+
+      {error && (
+        <p className="text-sm leading-relaxed text-accent" aria-live="polite">
+          {error}
+        </p>
+      )}
     </form>
   );
 }
