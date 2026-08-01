@@ -1,0 +1,247 @@
+@import "tailwindcss";
+
+/* ============================================================
+   DESIGN TOKENS — the single source of truth for the palette,
+   type, and motion used across the site. Edit here, not in
+   components. Utilities: bg-ink, text-fg, border-line, etc.
+   ============================================================ */
+@theme {
+  /* Palette (charcoal neutrals pinned by the project brief) */
+  --color-ink: #121212; /* page background */
+  --color-surface: #1e1e1e; /* cards / cells / panels */
+  --color-surface-2: #252525; /* hover state surface */
+  --color-line: #2a2a2a; /* hairlines and borders */
+  --color-line-2: #3a3a3a; /* hover state border */
+  --color-fg: #f3f4f6; /* primary text */
+  --color-muted: #9ca3af; /* secondary text */
+
+  /* Accent system — a small, coordinated set. Each hue owns one job or one
+     cell; neutrals still carry the page. Amber stays the "live action"
+     signal (status dot, links, CTA, selection). */
+  --color-accent: #e2b065; /* amber — liveness / primary action */
+  --color-accent-bright: #edc285; /* amber hover */
+  --color-accent-2: #5fb8a8; /* teal — backend & infrastructure */
+  --color-accent-3: #7fa8e8; /* blue — specializations */
+  --color-accent-4: #b3a4f5; /* violet — tools & workflow */
+
+  /* Type — Inter is the single professional, highly readable family; the
+     site uses no monospace anywhere. */
+  --font-sans: var(--font-inter), Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-inter), Inter, ui-sans-serif, system-ui, sans-serif;
+
+  /* Track */
+  --tracking-tightest: -0.04em;
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  html {
+    background-color: var(--color-ink);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-ink);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  /* Keep browser autofill inside the spec-sheet palette. */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--color-fg);
+    -webkit-box-shadow: 0 0 0 1000px var(--color-ink) inset;
+    transition: background-color 9999s ease-in-out 0s;
+  }
+}
+
+/* Soft pulse for the availability dot — the page's signature motion. */
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.82);
+  }
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 2.4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* ------------------------------------------------------------
+   MICRO-INTERACTION SYSTEM
+   Three reveal mechanisms + a shared hover language, tuned with
+   exponential ease-out so the page settles rather than dances.
+   ------------------------------------------------------------ */
+
+/* 1) Hero load-in — one-time on mount, staggered per element. */
+@keyframes hero-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animate-hero-fade {
+  animation: hero-fade 0.7s var(--ease-out-expo) both;
+}
+
+.animate-hero-rise {
+  animation: hero-rise 0.8s var(--ease-out-expo) both;
+}
+
+/* 2) Scroll reveal — small rise, once, driven by the Reveal component.
+      Delay is set inline; distance stays small so it reads as settling. */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.7s var(--ease-out-expo),
+    transform 0.7s var(--ease-out-expo);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* The signature "living" moment per section: the amber rule under each
+   section heading draws itself left to right on reveal. */
+.heading-rule {
+  display: block;
+  width: 40px;
+  height: 2px;
+  margin-top: 14px;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.8s var(--ease-out-expo) 0.08s;
+}
+
+.reveal.is-visible .heading-rule {
+  transform: scaleX(1);
+}
+
+/* 3) Hover language. */
+
+/* Link underline draw — origin-left, 1px, currentColor. */
+.link-underline {
+  position: relative;
+}
+
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 1px;
+  width: 100%;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s var(--ease-out-expo);
+}
+
+.link-underline:hover::after,
+.link-underline:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* Bento cell accent bar grows along its hue on hover. */
+.cell-bar {
+  transform-origin: left;
+  transition: transform 0.45s var(--ease-out-expo);
+}
+
+.group:hover .cell-bar {
+  transform: scaleX(1.7);
+}
+
+/* Project plate wireframe bars brighten in sequence on card hover. */
+.plate-bar {
+  opacity: 0.4;
+  transition: opacity 0.45s var(--ease-out-expo);
+}
+
+.plate-bar:nth-child(2) {
+  transition-delay: 0.05s;
+}
+
+.plate-bar:nth-child(3) {
+  transition-delay: 0.1s;
+}
+
+.plate-bar:nth-child(4) {
+  transition-delay: 0.15s;
+}
+
+.group:hover .plate-bar {
+  opacity: 1;
+}
+
+/* ------------------------------------------------------------
+   THE LAB — the unprofessional counterpoint surface at /lab. Same
+   tokens, looser register. The photo dump's interactions (pointer
+   drag, z-bring-to-front, keyboard nudging) live in the ImageDump
+   component.
+   ------------------------------------------------------------ */
+
+/* Respect users who prefer reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Content must never be stranded invisible by a reveal. */
+  .reveal,
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .heading-rule {
+    transform: none;
+  }
+
+  .plate-bar {
+    opacity: 1;
+  }
+}
