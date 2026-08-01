@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio
 
-## Getting Started
+A personal portfolio for **Jerome Mondol** — a professional landing page (`/`) and a deliberately unprofessional second page (`/lab`).
 
-First, run the development server:
+Built with [Next.js 16](https://nextjs.org) (App Router), React 19, TypeScript, and Tailwind CSS v4.
+
+## Pages
+
+- **`/`** — the professional page: hero, skills grid, experience timeline, featured projects, and a contact form.
+- **`/lab`** — the counterpoint: build sheets for tinkering projects and a draggable photo dump.
+
+## Getting started
+
+Requires Node.js 20.9.0 or later.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install      # install dependencies
+npm run dev      # start the dev server (http://localhost:3000)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Scripts
 
-You can start editing the page by modifying `src/app/page.tsx`. The page auto-updates as you edit the file.
+| Command        | Description                          |
+| -------------- | ------------------------------------ |
+| `npm run dev`  | Start the development server         |
+| `npm run build`| Create a production build            |
+| `npm run start`| Serve the production build           |
+| `npm run lint` | Lint the codebase                    |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project structure
 
-## Learn More
+```
+src/
+  app/             # routes: page.tsx (/), lab/page.tsx (/lab)
+  components/
+    layout/        # page shell: header, footer, container
+    sections/      # one file per page section
+    ui/            # reusable primitives (Reveal, ImageDump, ...)
+  data/            # all content lives here — edit these files
+  lib/             # utilities (cn)
+  styles/          # global CSS + design tokens
+public/            # static assets
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Customizing content
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+All page content is data-driven. Edit the files in `src/data/`:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| File                  | Content                                  |
+| --------------------- | ---------------------------------------- |
+| `profile.js`          | Name, role, bio, email, social links     |
+| `skills.js`           | Skill groups shown in the bento grid     |
+| `experience.js`       | Work history timeline                    |
+| `projects.js`         | Featured portfolio projects              |
+| `lab.js`              | Photos for the `/lab` photo dump         |
+| `lab-projects.js`     | Build-sheet projects for `/lab`          |
 
-## Deploy on Vercel
+### Images
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Local images go in `public/` and are referenced by path (e.g. `/lab/my-photo.jpg`). Remote images are allowed from any `https` host (see `next.config.ts`); set the `image` field in `lab.js` / `lab-projects.js` to a URL.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Design
+
+Charcoal dossier theme, a single sans-serif typeface, and a coordinated four-hue accent set. See `DESIGN.md` for the full design language.
