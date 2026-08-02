@@ -38,12 +38,13 @@ export const skillGroups = [
     blurb:
       "The languages and frameworks I build products with every week, end to end.",
     items: [
+      { name: "Next.js", logo: "nextdotjs", detail: "App Router, server components" },
       { name: "TypeScript", logo: "typescript", detail: "Daily driver across every layer" },
-      { name: "React", logo: "react", detail: "Server & client components" },
-      { name: "Next.js", logo: "nextdotjs", detail: "App Router, cache-aware" },
-      { name: "Node.js", logo: "nodedotjs", detail: "APIs, workers, tooling" },
-      { name: "PostgreSQL", logo: "postgresql", detail: "Schema design & query tuning" },
       { name: "Tailwind CSS", logo: "tailwindcss", detail: "Tokenized design systems" },
+      { name: "Node.js", logo: "nodedotjs", detail: "APIs, tooling, runtime work" },
+      { name: "Express", logo: "express", detail: "Lightweight routes and APIs" },
+      { name: "MongoDB", logo: "mongodb", detail: "Document data and flexible models" },
+      { name: "PostgreSQL", logo: "postgresql", detail: "Schema design & query tuning" },
     ],
   },
   {
@@ -54,13 +55,10 @@ export const skillGroups = [
     blurb: "APIs, data, and the machinery that keeps them up.",
     items: [
       { name: "Node.js", logo: "nodedotjs" },
-      { name: "PostgreSQL", logo: "postgresql" },
-      { name: "Redis", logo: "redis" },
-      { name: "Docker", logo: "docker" },
-      { name: "AWS" },
-      { name: "Terraform", logo: "terraform" },
-      { name: "CI/CD" },
-      { name: "Observability" },
+      { name: "Express", logo: "express" },
+      { name: "Supabase", logo: "supabase" },
+      { name: "Firebase", logo: "firebase" },
+      { name: "Cloudflare", logo: "cloudflare" },
     ],
   },
   {
@@ -71,10 +69,9 @@ export const skillGroups = [
     blurb: "How I move fast without making a mess.",
     items: [
       { name: "Git", logo: "git" },
-      { name: "Figma", logo: "figma" },
-      { name: "Vitest", logo: "vitest" },
-      { name: "Vercel", logo: "vercel" },
-      { name: "ESLint", logo: "eslint" },
+      { name: "GitHub", logo: "github" },
+      { name: "Vite", logo: "vite" },
+      { name: "VSC" },
     ],
   },
   {

@@ -75,13 +75,37 @@ export const labItems = [
   {
     title: "Prize",
     location: "PRIZEE",
-    date: "2022",
+    date: "2026",
     image: "/dnd/9.webp"
   },
   {
     title: "Project",
     location: "PROJECTT",
-    date: "2022",
+    date: "2026",
     image: "/dnd/10.webp"
+  },
+  {
+    title: "Project Showcase",
+    location: "Judgement!",
+    date: "2026",
+    image: "/dnd/11.webp"
+  },
+  {
+    title: "Project Showcase",
+    location: "SHOWDOWN",
+    date: "2025",
+    image: "/dnd/12.webp"
+  },
+  {
+    title: "Project",
+    location: "MEOW",
+    date: "2026",
+    image: "/dnd/13.webp"
+  },
+  {
+    title: "Prize",
+    location: "PRIZE",
+    date: "2025",
+    image: "/dnd/14.webp"
   },
 ];

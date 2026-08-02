@@ -20,41 +20,29 @@
 /** @type {ExperienceItem[]} */
 export const experience = [
   {
-    period: "2023 – Present",
-    role: "Full-Stack Developer",
-    company: "Independent / Freelance",
+    period: "2026 – Present",
+    role: "Full Stack Intern",
+    company: "RiseTogether",
     location: "Remote",
     summary:
-      "Building and shipping client products across the whole stack — from the interface down to the infrastructure — with a focus on fast, reliable, accessible results.",
+      "Working with a team to build SaaS products, improve collaboration, and learn how team management works in a real product workflow.",
     highlights: [
-      "Shipped 10+ production applications for clients",
-      "Owned the stack end to end: design systems, APIs, deployment",
-      "Maintained a +0.5 Core Web Vitals budget on every launch",
+      "Building SaaS products with a team",
+      "Learning team management and collaboration",
+      "Working on shared features and product delivery",
     ],
   },
   {
-    period: "2020 – 2023",
-    role: "Frontend Engineer",
-    company: "A Previous Team",
-    location: "Hybrid",
+    period: "2025 – 2026",
+    role: "Full Stack Intern",
+    company: "Labmentix",
+    location: "India · Online Internship",
     summary:
-      "Owned the frontend of a busy SaaS product, turning a tangled codebase into a tokenized component library with real test coverage.",
+      "Built full stack projects and helped with real-time projects, which made project management and delivery much easier to understand.",
     highlights: [
-      "Rebuilt the design system powering three products",
-      "Cut average page load time by 40%",
-      "Led the migration to typed, server-rendered React",
-    ],
-  },
-  {
-    period: "2018 – 2020",
-    role: "Software Engineer",
-    company: "An Earlier Company",
-    location: "On-site",
-    summary:
-      "Full-stack on internal tooling: dashboards, data pipelines, and the APIs that fed them. Learned that most hard problems are people problems.",
-    highlights: [
-      "Automated a monthly report that saved a full day a week",
-      "Built the internal metrics dashboard used daily by the team",
+      "Built full stack project work end to end",
+      "Helped with real-time projects",
+      "Improved understanding of project management",
     ],
   },
 ];
