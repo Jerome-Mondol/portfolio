@@ -1,5 +1,5 @@
 import type { ComponentType, SVGProps } from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { GithubIcon, LinkedinIcon, XIcon } from "@/components/ui/BrandIcons";
 import { Reveal } from "@/components/ui/Reveal";
@@ -52,6 +52,19 @@ export function Contact() {
                 Start a conversation
                 <ArrowRight
                   className="size-4 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5"
+                  strokeWidth={2}
+                />
+              </a>
+
+              <a
+                href={profile.resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center justify-center gap-2 rounded-md border border-line bg-surface px-5 py-3 text-sm font-bold text-fg transition-colors duration-200 hover:border-line-2 hover:text-accent"
+              >
+                Résumé
+                <Download
+                  className="size-4 shrink-0 transition-transform duration-200 group-hover:translate-y-0.5"
                   strokeWidth={2}
                 />
               </a>

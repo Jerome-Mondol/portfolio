@@ -8,8 +8,9 @@ import { profile } from "@/data/profile";
 const navItems = [
   { href: "#skills", index: "01", label: "Skills" },
   { href: "#experience", index: "02", label: "Experience" },
-  { href: "#work", index: "03", label: "Selected Work" },
-  { href: "#contact", index: "04", label: "Contact" },
+  { href: "#certifications", index: "03", label: "Certifications" },
+  { href: "#work", index: "04", label: "Selected Work" },
+  { href: "#contact", index: "05", label: "Contact" },
 ];
 
 /**
@@ -24,7 +25,7 @@ export function Hero() {
           <div className="lg:col-span-8">
             <h1
               id="hero-name"
-              className="hero-name whitespace-nowrap text-[clamp(2.75rem,7vw,5.25rem)] font-extrabold leading-[0.95] tracking-tightest text-accent"
+              className="hero-name text-[clamp(2.5rem,6.5vw,4.75rem)] font-extrabold leading-[0.95] tracking-tightest text-accent"
             >
               {profile.name}
             </h1>
@@ -53,14 +54,14 @@ export function Hero() {
           </div>
 
           <figure
-            className="hero-in relative mx-auto aspect-[4/5] w-28 shrink-0 self-center overflow-hidden rounded-md border border-line sm:w-32 lg:col-span-4 lg:w-40"
+            className="hero-in relative mx-auto aspect-[4/5] w-32 shrink-0 self-center overflow-hidden rounded-md border border-line sm:w-36 lg:col-span-4 lg:w-48"
             style={{ "--d": "0.22s" } as CSSProperties}
           >
             <Image
               src="/profile/profile.webp"
               alt={profile.name}
               fill
-              sizes="(max-width: 1024px) 256px, 320px"
+              sizes="(max-width: 1024px) 288px, 384px"
               priority
               className="object-cover"
             />

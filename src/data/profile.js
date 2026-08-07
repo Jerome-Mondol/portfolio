@@ -10,19 +10,31 @@
  * @typedef {Object} Profile
  * @property {string} name
  * @property {string} role
+ * @property {string} siteUrl
  * @property {string} availability
  * @property {string} bio
  * @property {string} email
+ * @property {string} resumeUrl
  * @property {string} [location]
  * @property {{ github?: string, linkedin?: string, x?: string }} links
  */
 
 /** @type {Profile} */
 export const profile = {
-  /** Your name — shown large in the hero and small in the header. */
+  /**
+   * Your name — shown large in the hero and small in the header.
+   * This is the exact string search engines should match you by.
+   */
   name: "Jerome Mondol",
   /** One-line role shown in the page title/meta. */
   role: "Full-Stack Developer",
+
+  /**
+   * Canonical URL of the deployed site, with trailing slash / no paths.
+   * Used for metadataBase (canonical link), Open Graph/Twitter meta, and
+   * JSON-LD structured data. REPLACE with your real domain once deployed.
+   */
+  siteUrl: "https://jeromemondol.codes",
 
   /** Availability text rendered inside the status tag. */
   availability: "Available for opportunities",
@@ -35,6 +47,9 @@ export const profile = {
 
   /** Contact email — used for the mailto: links and the CTA. */
   email: "jeromemondol11@gmail.com",
+
+  /** Link to the résumé (Google Drive / PDF). Opens in a new tab. */
+  resumeUrl: "https://drive.google.com/file/d/1hWmhGEfsvWTsph4UxHKvnKFogvT2YC_x/view?usp=sharing",
 
   /** Optional one-line location/timezone note. Delete the line to hide it. */
   location: "Khulna, Bangladesh",
