@@ -108,4 +108,118 @@ export const labItems = [
     date: "2025",
     image: "/dnd/14.webp"
   },
+  {
+    title: "MEET UP",
+    location: "Hero Union",
+    date: "2026",
+    image: "/dnd/15.webp"
+  },
+  {
+    title: "MEET UP",
+    location: "Hero Union",
+    date: "2026",
+    image: "/dnd/16.webp"
+  },
+  {
+    title: "PRIZEE",
+    location: "Prize taking",
+    date: "2024",
+    image: "/dnd/17.webp"
+  },
+  {
+    title: "PRIZEE",
+    location: "Prize Giving",
+    date: "2024",
+    image: "/dnd/18.webp"
+  },
+  {
+    title: "Science FAIRR!",
+    location: "district science fairr",
+    date: "2024",
+    image: "/dnd/19.webp"
+  },
+  {
+    title: "Science FAIR",
+    location: "School Science fair",
+    date: "2024",
+    image: "/dnd/20.webp"
+  },
+  {
+    title: "PROJECT",
+    location: "Science Project",
+    date: "2024",
+    image: "/dnd/21.webp"
+  },
+  {
+    title: "HONOUR",
+    location: "Honour",
+    date: "2025",
+    image: "/dnd/22.webp"
+  },
+  {
+    title: "Honour",
+    location: "Honour",
+    date: "2025",
+    image: "/dnd/23.webp"
+  },
+  {
+    title: "Prize",
+    location: "Prize",
+    date: "2025",
+    image: "/dnd/24.webp"
+  },
+  {
+    title: "Prizee",
+    location: "Prize",
+    date: "2026",
+    image: "/dnd/26.webp"
+  },
+  {
+    title: "PRIZEE",
+    location: "PRIZEE",
+    date: "2024",
+    image: "/dnd/27.webp"
+  },
+  {
+    title: "Showdown",
+    location: "Project Shocase Dhaka",
+    date: "2026",
+    image: "/dnd/29.webp"
+  },
+  {
+    title: "project",
+    location: "Project",
+    date: "2026",
+    image: "/dnd/30.webp"
+  },
+  {
+    title: "Hero Union",
+    location: "Hero Union",
+    date: "2026",
+    image: "/dnd/32.webp"
+  },
+  {
+    title: "Groupp",
+    location: "PRIZEE",
+    date: "2025",
+    image: "/dnd/33.webp"
+  },
+  
+  {
+    title: "Honour",
+    location: "Recognition",
+    date: "2025",
+    image: "/dnd/36.webp"
+  },
+  {
+    title: "PROJECT",
+    location: "FIRST PROJECT!",
+    date: "2025",
+    image: "/dnd/37.webp"
+  },{
+    title: "presentation",
+    location: "Project Presentation",
+    date: "2025",
+    image: "/dnd/38.webp"
+  },
 ];

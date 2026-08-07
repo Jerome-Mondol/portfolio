@@ -413,9 +413,9 @@ html.site-loading .site-loader {
 }
 
 .site-loader__name {
+  display: inline-block;
   margin-top: 18px;
-  max-width: 12ch;
-  text-wrap: balance;
+  white-space: nowrap;
   font-size: clamp(2.75rem, 7vw, 5.25rem);
   font-weight: 800;
   line-height: 0.95;

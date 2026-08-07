@@ -37,7 +37,7 @@ export const profile = {
   email: "jeromemondol11@gmail.com",
 
   /** Optional one-line location/timezone note. Delete the line to hide it. */
-  location: "Remote · Worldwide",
+  location: "Khulna, Bangladesh",
 
   /** Social / professional links. Delete any entry to hide its icon. */
   links: {
