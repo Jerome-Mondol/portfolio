@@ -17,8 +17,8 @@ const RISE = 100; // in svh
  */
 const CARD_SCROLL = 50;
 
-/** Card width — 90% of the container, capped on extreme wide screens. */
-const CARD_WIDTH = "min(90%, 100svh)";
+/** Card width — 94% of the container, capped on extreme wide screens. */
+const CARD_WIDTH = "min(94%, 106svh)";
 
 /** Certificate aspect — height is 66.7% of the width (3:2, landscape). */
 const CARD_RATIO = 2 / 3;
@@ -88,7 +88,7 @@ export function CertificationsStack() {
       className="relative"
       style={{ height: `${CARD_SCROLL * (count - 1) + 100}svh` }}
     >
-      <div className="sticky top-0 flex h-svh items-center justify-center">
+      <div className="sticky top-0 flex h-svh items-center justify-center overflow-hidden">
         <Container>
           <div className="w-full">
           {certifications.map((cert, index) => (

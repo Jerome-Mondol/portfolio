@@ -2,8 +2,9 @@ import type { ReactNode } from "react";
 import { cn } from "@/lib/cn";
 
 /**
- * Container — the main content column. Capped at 70% of the viewport on
- * large screens (per the project brief), with responsive padding below.
+ * Container — the main content column. 80% on laptop screens (where a fixed
+ * 60% crowds the hero name and photo), 60% once the display is large. Every
+ * section/component renders inside this so content never spills full-bleed.
  */
 export function Container({
   children,
@@ -15,7 +16,7 @@ export function Container({
   return (
     <div
       className={cn(
-        "mx-auto w-full px-5 sm:px-8 lg:max-w-[60%]",
+        "mx-auto w-full px-5 sm:px-8 lg:max-w-[80%] xl:max-w-[60%]",
         className
       )}
     >

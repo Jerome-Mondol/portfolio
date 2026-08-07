@@ -41,6 +41,14 @@ export function SiteFooter() {
           >
             {onLab ? "Home" : "Lab"}
           </a>
+          <a
+            href={profile.resumeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link-underline text-xs font-medium tracking-wide text-muted transition-colors hover:text-accent"
+          >
+            Résumé
+          </a>
         </nav>
       </Container>
     </footer>
