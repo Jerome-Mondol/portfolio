@@ -177,7 +177,7 @@ export const labItems = [
   {
     title: "PRIZEE",
     location: "PRIZEE",
-    date: "2024",
+    date: "2026",
     image: "/dnd/27.webp"
   },
   {

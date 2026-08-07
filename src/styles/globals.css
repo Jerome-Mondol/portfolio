@@ -39,7 +39,14 @@
 @layer base {
   html {
     background-color: var(--color-ink);
-    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    /* Lenis drives smooth scroll when active (html gets the .lenis class);
+       fall back to native smooth only when it isn't running. */
+    html:not(.lenis) {
+      scroll-behavior: smooth;
+    }
   }
 
   body {

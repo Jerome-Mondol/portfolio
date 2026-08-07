@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../styles/globals.css";
+import "lenis/dist/lenis.css";
 import { profile } from "@/data/profile";
 import { DirectionContract } from "@/components/ui/DirectionContract";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { SiteLoader } from "@/components/layout/SiteLoader";
+import { SmoothScroll } from "@/components/layout/SmoothScroll";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -34,7 +36,7 @@ export default function RootLayout({
         <SiteLoader />
         <ScrollProgress />
         <DirectionContract />
-        {children}
+        <SmoothScroll>{children}</SmoothScroll>
         <noscript>
           <style>{`.reveal { opacity: 1 !important; transform: none !important; }`}</style>
         </noscript>
