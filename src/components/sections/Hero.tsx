@@ -1,6 +1,6 @@
+import type { CSSProperties } from "react";
 import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
-import { StatusTag } from "@/components/ui/StatusTag";
 import { profile } from "@/data/profile";
 
 /** Section index for the page's table of contents. */
@@ -19,26 +19,24 @@ export function Hero() {
   return (
     <section id="top" className="border-b border-line">
       <Container className="pb-16 pt-14 sm:pb-24 sm:pt-20">
-        <StatusTag className="animate-hero-fade">{profile.availability}</StatusTag>
-
         <h1
-          className="animate-hero-rise mt-8 max-w-[12ch] text-balance text-[clamp(2.75rem,7vw,5.25rem)] font-extrabold leading-[0.95] tracking-tightest text-fg"
-          style={{ animationDelay: "0.08s" }}
+          id="hero-name"
+          className="hero-name mt-8 max-w-[12ch] text-balance text-[clamp(2.75rem,7vw,5.25rem)] font-extrabold leading-[0.95] tracking-tightest text-accent"
         >
           {profile.name}
         </h1>
 
         <p
-          className="animate-hero-rise mt-7 max-w-prose text-lg leading-relaxed text-muted sm:text-xl"
-          style={{ animationDelay: "0.16s" }}
+          className="hero-in mt-7 max-w-prose text-lg leading-relaxed text-muted sm:text-xl"
+          style={{ "--d": "0.12s" } as CSSProperties}
         >
           {profile.bio}
         </p>
 
         <nav
           aria-label="Page sections"
-          className="animate-hero-rise mt-14"
-          style={{ animationDelay: "0.24s" }}
+          className="hero-in mt-14"
+          style={{ "--d": "0.2s" } as CSSProperties}
         >
           <ol className="divide-y divide-line border-y border-line">
             {navItems.map((item) => (

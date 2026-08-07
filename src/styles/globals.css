@@ -70,6 +70,34 @@
   }
 }
 
+/* ------------------------------------------------------------
+   SCROLLBAR — a thin, hairline bar in the spec-sheet palette. The ground
+   stays #121212, the thumb is a neutral hairline that warms to amber on
+   hover; no chrome, matching the flat-by-default rule.
+   ------------------------------------------------------------ */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-ink);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-line);
+  border-radius: 9999px;
+  border: 2px solid var(--color-ink);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line) var(--color-ink);
+}
+
 /* Soft pulse for the availability dot — the page's signature motion. */
 @keyframes pulse-dot {
   0%,
@@ -230,8 +258,233 @@
   animation: hero-fade 0.7s var(--ease-out-expo) both;
 }
 
-.animate-hero-rise {
-  animation: hero-rise 0.8s var(--ease-out-expo) both;
+/* Hero content is gated by the loader's lifecycle. While the loader is active
+   (html.site-loading before it reaches site-loaded) the hero sits invisible.
+   On hand-off the loader's own name has FLIP'd to the hero h1 and fades, the
+   real hero name crossfades in beneath it, and the remaining hero content
+   slides in from the left — the loader's name becoming the hero's name. */
+html.site-loading:not(.site-loaded) .hero-name,
+html.site-loading:not(.site-loaded) .hero-in {
+  opacity: 0;
+}
+
+html.site-loaded .hero-name {
+  opacity: 1;
+}
+
+@keyframes hero-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-26px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+html.site-loaded .hero-in {
+  animation: hero-in-left 0.55s var(--ease-out-expo) both;
+  animation-delay: var(--d, 0s);
+}
+
+/* ------------------------------------------------------------
+   SITE LOADER — a shared-element, first-paint reveal. The layout renders it
+   and an inline script flags html.site-loading before paint so the hero
+   stays hidden with no flash. The name resolves letter-by-letter, then the
+   whole center column FLIPs to the hero h1's position (JS-measured) and the
+   name crossfades into the real hero heading. Without JS the sheet fades
+   away on a timer so content underneath is never stranded.
+   ------------------------------------------------------------ */
+.site-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background: var(--color-ink);
+  pointer-events: none;
+  transition: opacity 0.2s var(--ease-out-expo);
+  animation: loader-auto-hide 0.5s var(--ease-out-expo) 2.6s forwards;
+}
+
+/* Hold the page still while the loader is on. */
+html.site-loading {
+  overflow: hidden;
+}
+
+/* JS active (layout script set site-loading): the component drives the
+   exit; keep a late safety fade in case hydration ever stalls. */
+html.site-loading .site-loader {
+  animation: loader-auto-hide 0.5s var(--ease-out-expo) 6s forwards;
+}
+
+.site-loader.is-hidden {
+  opacity: 0;
+}
+
+@keyframes loader-auto-hide {
+  to {
+    opacity: 0;
+  }
+}
+
+/* Loader chrome (framing, eyebrow, rule, metas) recedes as the name departs. */
+.site-loader.is-traveling .site-loader__corner,
+.site-loader.is-traveling .site-loader__eyebrow,
+.site-loader.is-traveling .site-loader__rule,
+.site-loader.is-traveling .site-loader__meta {
+  opacity: 0 !important;
+  transition: opacity 0.35s var(--ease-out-expo);
+}
+
+/* Corner ticks — the spec-sheet framing. */
+.site-loader__corner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  opacity: 0;
+  border-color: var(--color-line-2);
+  animation: loader-corner 0.5s var(--ease-out-expo) 0.2s forwards;
+}
+
+.site-loader__corner--tl {
+  top: 20px;
+  left: 20px;
+  border-top: 1px solid;
+  border-left: 1px solid;
+}
+
+.site-loader__corner--tr {
+  top: 20px;
+  right: 20px;
+  border-top: 1px solid;
+  border-right: 1px solid;
+}
+
+.site-loader__corner--bl {
+  bottom: 20px;
+  left: 20px;
+  border-bottom: 1px solid;
+  border-left: 1px solid;
+}
+
+.site-loader__corner--br {
+  bottom: 20px;
+  right: 20px;
+  border-bottom: 1px solid;
+  border-right: 1px solid;
+}
+
+@keyframes loader-corner {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 0.35;
+    transform: none;
+  }
+}
+
+.site-loader__center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px;
+  text-align: center;
+  will-change: transform;
+}
+
+.site-loader__eyebrow {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--color-muted);
+  opacity: 0;
+  animation: loader-eyebrow 0.6s var(--ease-out-expo) 200ms forwards;
+}
+
+@keyframes loader-eyebrow {
+  to {
+    opacity: 1;
+  }
+}
+
+.site-loader__name {
+  margin-top: 18px;
+  max-width: 12ch;
+  text-wrap: balance;
+  font-size: clamp(2.75rem, 7vw, 5.25rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--color-accent);
+}
+
+.site-loader__letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(22px);
+  animation: loader-letter 0.55s var(--ease-out-expo) var(--d) forwards;
+}
+
+@keyframes loader-letter {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.site-loader__rule {
+  width: 120px;
+  height: 1px;
+  margin: 26px auto 0;
+  background: var(--color-line);
+  overflow: hidden;
+}
+
+.site-loader__rule i {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: loader-rule 0.8s var(--ease-out-expo) 720ms forwards;
+}
+
+@keyframes loader-rule {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.site-loader__meta {
+  position: absolute;
+  bottom: 24px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  opacity: 0;
+  animation: loader-meta 0.6s var(--ease-out-expo) 0.5s forwards;
+}
+
+.site-loader__meta--left {
+  left: 24px;
+}
+
+.site-loader__meta--right {
+  right: 24px;
+}
+
+@keyframes loader-meta {
+  to {
+    opacity: 0.55;
+  }
 }
 
 /* 2) Scroll reveal — small rise, once, driven by the Reveal component.
@@ -340,6 +593,24 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+
+  /* The loader is skipped entirely for reduced-motion users … */
+  .site-loader,
+  .site-loader *,
+  .site-loader *::before,
+  .site-loader *::after {
+    animation: none !important;
+    opacity: 0 !important;
+    transform: none !important;
+  }
+
+  /* … and hero content is released even if the class flag is still set. */
+  .hero-name,
+  .hero-in {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
 
   /* Content must never be stranded invisible by a reveal. */
   .reveal,

@@ -21,7 +21,7 @@ export function SiteHeader() {
       <Container className="flex h-16 items-center justify-between">
         <Link
           href={onLab ? "/" : "#top"}
-          className="link-underline text-sm font-bold tracking-tight text-fg transition-colors hover:text-accent"
+          className="link-underline text-lg font-bold tracking-tight text-fg transition-colors hover:text-accent"
         >
           {profile.name}
         </Link>
@@ -42,7 +42,7 @@ export function SiteHeader() {
 
           <a
             href={`mailto:${profile.email}`}
-            className="group link-underline inline-flex items-center gap-1.5 text-xs font-medium text-muted transition-colors hover:text-accent"
+            className="group link-underline inline-flex items-center gap-1.5 text-sm font-medium text-muted transition-colors hover:text-accent"
           >
             {profile.email}
             <ArrowUpRight
